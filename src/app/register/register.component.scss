@@ -1,0 +1,49 @@
+.main-register{
+    width: 100 vw;
+    height: 90 vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;    
+    align-items: center;
+    background-color: rgba(182, 234, 234, 0.963);  
+    border: 1px solid black;
+}
+
+.register * {
+    margin: 2% 0;
+}
+
+input[type="submit"]{
+    padding: 1% 2%;    
+    background-color : burlywood;
+    border: 1px solid burlywood;         
+    cursor : pointer;
+    width: 70%;
+    margin : auto;
+}
+
+input[type="submit"]:hover{
+    background-color: rgb(211, 167, 108);    
+}
+
+a {
+    text-decoration: none;
+}
+
+input{
+    width: 70%;   
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
