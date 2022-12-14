@@ -1,0 +1,12 @@
+<p>film works!</p>
+
+
+    <p *ngFor="let item of codesPays">{{item.pays}}</p>
+
+    <button (click)="getAll()">getAll</button>
+
+    <ul>
+        <li *ngFor="let item of films">{{ item.titre }} -- {{ item.dateSortie | date : 'dd/MM/yyyy'}}</li>
+    </ul>
+
+
