@@ -5,6 +5,7 @@ export class Film {
   Duree: string;
   Origine: string;
   Synopsis_film: string;
+  Img_Url : URL;
 
   constructor(
     id: number,
@@ -12,7 +13,8 @@ export class Film {
     dateSortie: Date,
     Duree: string,
     Origine: string,
-    Synopsis_film: string
+    Synopsis_film: string,
+    Img_Url : URL
   ) {
     this.id = id;
     this.titre = titre;
@@ -20,5 +22,6 @@ export class Film {
     this.Duree = Duree;
     this.Origine = Origine;
     this.Synopsis_film = Synopsis_film;
+    this.Img_Url = Img_Url;
   }
 }

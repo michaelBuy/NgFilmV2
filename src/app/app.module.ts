@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FilmComponent } from './film/film.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BetaserieComponent } from './betaserie/betaserie.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    FilmComponent
+    FilmComponent,
+    BetaserieComponent
   ],
   imports: [
     BrowserModule,
