@@ -1,22 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Data } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Beta } from '../models/betaSerie';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BetaSerieService {
 
-  
+export class BetaSerieService {
 
   private _url_film = "https://api.betaseries.com/movies/";
   private _order = "list?order=popularity";
-  private _key = "&key=35d66b75531a";  
+  private _random = "random?";
+  private _query = "search/all?query="
+  private _key = "&key=35d66b75531a";
+
 
   constructor(private _httpClient : HttpClient) { }
 
-  getPopularity() : Observable<Beta[]>{
-    return this._httpClient.get<Beta[]>(`${this._url_film}${this._order}${this._key}`)
-  }	
+  getPopularity() : Observable<Data>{
+    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`);
+  }
+
+  getRandomMovie() : Observable<Data>{
+    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`);
+  }
+
+  searchMovie(search : string) : Observable<Data>{
+    return this._httpClient.get<Data>(`${this._url_film}${this._query}${search}${this._key}`);
+  }
 }
+
+
+

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Movie } from '../models/betaSerie';
+import { BetaSerieService } from '../service/beta-serie.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  movieSearch : Movie[] = [];
+
+  constructor(private _betaservice : BetaSerieService){}
+
+  ngOnInit() : void{
+
+  }
+
+  searchMovie(search : string){
+    this._betaservice.searchMovie(search).subscribe({
+      next : (res) => {
+        this.movieSearch = res['movies'];
+        console.log(this.movieSearch);
+      }
+    })
+  }
 }

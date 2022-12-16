@@ -1,8 +1,8 @@
 nav{
     width: 100vw;
     height: 10vh;
-    background-color: rgba(182, 234, 234, 0.963);   
-    margin-bottom: 4%; 
+    background-color: rgba(27, 27, 27, 0.932);
+    margin-bottom: 4%;
 }
 
 ul{
@@ -21,22 +21,22 @@ ul{
 }
 .buttons{
     display: flex;
-    margin : 0 2%;    
+    margin : 0 2%;
 }
 li{
     margin : 0 2%;
 }
 
 button{
-    padding: 1% 2%;    
-    background-color : burlywood;
-    border: 1px solid burlywood;    
-    margin : 0 2%;    
+    padding: 1% 2%;
+    background-color : rgb(128, 125, 121);
+    border: 1px solid rgb(128, 125, 121);
+    margin : 0 2%;
     cursor : pointer;
 }
 
 button:hover{
-    background-color: rgb(211, 167, 108);    
+    background-color: rgb(180, 178, 176);
 }
 
 a {

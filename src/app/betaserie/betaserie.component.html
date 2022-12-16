@@ -1,13 +1,21 @@
 
-    <h2>{{ title }}</h2>
-    
-    <button (click)="poularity()">pop</button>
-        <div *ngFor="let film of betas">
-            <div>                
-                    
-                <p>{{ film.id }}</p>                      
-                         
-            </div>
-        </div>  
-    
+    <div class="container">
+      <h2 *ngIf="betas && betas.length > 0">{{ title }}</h2>
+      <div class="row row-cols-1 row-cols-md-5">
+          <div class="col mb-4" *ngFor="let film of betas">
+              <div class="card w-30 h-100" >
+                  <h5 class="card-title">{{ film.title }}</h5>
+                  <img class="card-img-top" src="{{film.poster}}" alt="Card image cap">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ film.production_year }}</h5>
+                      </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+
 
