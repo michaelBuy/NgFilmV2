@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { FilmComponent } from './film/film.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BetaserieComponent } from './betaserie/betaserie.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BetaserieComponent } from './betaserie/betaserie.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

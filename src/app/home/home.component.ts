@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movie } from '../models/betaSerie';
 import { BetaSerieService } from '../service/beta-serie.service';
 
@@ -7,7 +7,7 @@ import { BetaSerieService } from '../service/beta-serie.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
 
   movieSearch : Movie[] = [];
 

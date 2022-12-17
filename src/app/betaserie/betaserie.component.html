@@ -1,13 +1,33 @@
 
     <div class="container">
-      <h2 *ngIf="betas && betas.length > 0">{{ title }}</h2>
+      <h2 *ngIf="betas && betas.length > 0">{{ title }}</h2>     
+      <button type="button" class="btn btn-primary d-flex p-2" (click)="toggleisNewBadge()"> 
+        <span class="material-icons">
+            {{ showBadge ? 'visibility_off' : 'visibility'}}
+        </span>       
+        <span>
+          {{ showBadge ? 'Cacher' : 'Afficher'}} Nouveau
+        </span>
+      </button>
+      <hr>
+      <div class="my-2">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="filter">Filtre actuel : </span>
+                <b>{{ _betaserieFilter }}</b>
+            </div>
+            <div class="col-md-8 form-group">
+                <input type="text" class="form-control" [(ngModel)]="_betaserieFilter">
+            </div>
+        </div>
+      </div>
       <div class="row row-cols-1 row-cols-md-5">
           <div class="col mb-4" *ngFor="let film of betas">
               <div class="card w-30 h-100" >
-                  <h5 class="card-title">{{ film.title }}</h5>
-                  <img class="card-img-top" src="{{film.poster}}" alt="Card image cap">
+                  <!-- <h5 class="card-title">{{ film.title }}</h5> -->
+                  <img class="card-img-top" [src]="film.poster" [title]="film.title" [alt]="film.title">
                       <div class="card-body">
-                          <h5 class="card-title">{{ film.production_year }}</h5>
+                        <span class="badge rounded-pill bg-info" *ngIf="showBadge">Nouveau</span>
                       </div>
               </div>
           </div>
