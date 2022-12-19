@@ -27,17 +27,17 @@ export class BetaserieComponent {
      this._betaserieService.getPopularity().subscribe({
       next : (res) => {
         this.betas = res['movies'];
-        console.log("inside" + this.betas)
+        //console.log("inside" + this.betas)
       },
-    })    
+    })
     // a checker tuto 19
      this.filteredBetaserie = this.betas;
-    console.log(" test " + this.betas);    
-  }  
+    // console.log(" test " + this.betas);
+  }
 
   public get betaFilter() : string{
     return this._betaserieFilter
-  } 
+  }
 
   public set betaFilter(filter : string){
     this._betaserieFilter = filter;
@@ -61,7 +61,7 @@ export class BetaserieComponent {
     this._betaserieService.getPopularity().subscribe({
       next : (res) => {
         this.betas = res['movies'];
-        console.log(this.betas)
+        // console.log(this.betas)
       },
     })
   }
@@ -70,7 +70,7 @@ export class BetaserieComponent {
     this._betaserieService.getRandomMovie().subscribe({
       next : (res) => {
         this.beta_rnd = res['movies'];
-        console.log(res);
+        // console.log(res);
       },
       error : () => {},
       complete : () => {}

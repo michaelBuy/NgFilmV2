@@ -1,8 +1,19 @@
 
 <div class="container">
   <h2>Votre recherche :</h2>
-    <form action="">
-      <input type="text" placeholder="Film">
-      <button type="submit" >Enter</button>
-    </form>
+      <div>
+        <input [(ngModel)]="movie" type="text">
+        <button type="submit" (click)="searchMovie(movie)" >Enter</button>
+    </div>
+    <hr>
+    <div class="row row-cols-1 row-cols-md-5">
+      <div class="col mb-4" *ngFor="let film of movieSearch">
+          <div class="card w-30 h-80" >
+              <img class="card-img-top" [src]="film.poster" [title]="film.title" [alt]="film.title">
+              <span class="material-icons" (click)="toggleIsShowStar()">
+                {{ 'star' }}
+              </span>
+          </div>
+      </div>
+  </div>
 </div>

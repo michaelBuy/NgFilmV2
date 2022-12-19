@@ -1,4 +1,20 @@
 
+.card-img-top{
+  z-index:1;
+}
 
+.material-icons{
+  z-index: 2;
+  position: relative;
+  left: 83%;
+  font-size: 250%;
+  color :rgb(161, 157, 157);
+  bottom : 40px;
+  width: 40px;
+  height: 40px;
+}
 
+.material-icons:hover{
+  color : rgb(97, 86, 86)
+}
 

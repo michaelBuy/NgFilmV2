@@ -11,10 +11,17 @@ export class HomeComponent implements OnInit{
 
   movieSearch : Movie[] = [];
 
+  movie : string = "";
+
+  public showStar : boolean = false;
+
   constructor(private _betaservice : BetaSerieService){}
 
   ngOnInit() : void{
+  }
 
+  toggleIsShowStar() : void{
+    this.showStar = !this.showStar;
   }
 
   searchMovie(search : string){
