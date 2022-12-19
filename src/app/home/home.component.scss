@@ -6,7 +6,7 @@
 .material-icons{
   z-index: 2;
   position: relative;
-  left: 83%;
+  left: 80%;
   font-size: 250%;
   color :rgb(161, 157, 157);
   bottom : 40px;
@@ -17,4 +17,11 @@
 .material-icons:hover{
   color : rgb(97, 86, 86)
 }
+
+.card{
+  box-shadow: 12px 12px 2px 1px rgba(110, 110, 112, 0.2);
+}
+
+
+
 

@@ -11,17 +11,31 @@ export class HomeComponent implements OnInit{
 
   movieSearch : Movie[] = [];
 
+  idMovie? : string;
+
   movie : string = "";
 
-  public showStar : boolean = false;
+  public showStar : boolean = true;
 
   constructor(private _betaservice : BetaSerieService){}
 
-  ngOnInit() : void{
+  ngOnInit() : void{       
+  }  
+  
+  toggleIsShowStar(entity : Movie) : void{      
+    this.showStar = !this.showStar;    
+    this.idMovie = <string>entity.id;
+    console.log(this.idMovie);
+    // this.idMovie = <string>entity.id; 
+    // this.getMovieById(this.idMovie);            
   }
-
-  toggleIsShowStar() : void{
-    this.showStar = !this.showStar;
+  
+  getMovieById(id : string) : void{
+    this._betaservice.getMovieById(id).subscribe({
+      next : (res) => {
+        this.movieSearch = res['movies'];                    
+      }
+    })
   }
 
   searchMovie(search : string){
