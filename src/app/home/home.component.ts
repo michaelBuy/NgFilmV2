@@ -10,30 +10,34 @@ import { BetaSerieService } from '../service/beta-serie.service';
 export class HomeComponent implements OnInit{
 
   movieSearch : Movie[] = [];
-
-  idMovie? : string;
-
+  movieById : Movie[] = [];
+  idMovie? : number;
   movie : string = "";
-
   public showStar : boolean = true;
+  public receiveRating? : string;
+  public errMsg?: string; 
 
   constructor(private _betaservice : BetaSerieService){}
 
-  ngOnInit() : void{       
+  ngOnInit() : void{      
   }  
-  
-  toggleIsShowStar(entity : Movie) : void{      
-    this.showStar = !this.showStar;    
-    this.idMovie = <string>entity.id;
-    console.log(this.idMovie);
-    // this.idMovie = <string>entity.id; 
-    // this.getMovieById(this.idMovie);            
+
+  ngOnChanges() : void {         
   }
   
-  getMovieById(id : string) : void{
+  toggleIsShowStar(entity : Movie){  
+    if(entity.id != null){
+      this.showStar = !this.showStar; 
+    }      
+    this.idMovie = entity.id; 
+    this.getMovieById(this.idMovie!)                                                                                                                                                                                                                               
+  };  
+  
+  getMovieById(id : number){
     this._betaservice.getMovieById(id).subscribe({
       next : (res) => {
-        this.movieSearch = res['movies'];                    
+        this.movieById = res['movie']; 
+        console.log(this.movieById);                                          
       }
     })
   }
@@ -43,7 +47,13 @@ export class HomeComponent implements OnInit{
       next : (res) => {
         this.movieSearch = res['movies'];
         console.log(this.movieSearch);
-      }
+      },
+      error : (err) => { this.errMsg = err},
+      complete : () => {}
     })
+  }
+
+  public receiveRatingClicked(message : string) : void{
+    this.receiveRating = message
   }
 }

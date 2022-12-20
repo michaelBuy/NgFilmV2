@@ -17,22 +17,20 @@ export class BetaserieComponent {
 
   beta_rnd: Movie[] = [];
 
-  public _betaserieFilter = 'Film';
+  private _betaserieFilter = 'Film';  
 
   public filteredBetaserie : Movie[] = [];
 
-  constructor(private _betaserieService : BetaSerieService){}
+  constructor(private _betaserieService : BetaSerieService){}  
 
-  ngOnInit() : void{
+  ngOnInit() : void{  
      this._betaserieService.getPopularity().subscribe({
       next : (res) => {
-        this.betas = res['movies'];
-        //console.log("inside" + this.betas)
+        this.betas = res['movies'];       
       },
-    })
-    // a checker tuto 19
+    })    
      this.filteredBetaserie = this.betas;
-    // console.log(" test " + this.betas);
+     this.betaFilter = ''    
   }
 
   public get betaFilter() : string{
@@ -49,7 +47,7 @@ export class BetaserieComponent {
     this.showBadge = !this.showBadge;
   }
 
-  public filterBetaseries(criteria : string) : Movie[]{
+  private filterBetaseries(criteria : string) : Movie[]{
     criteria = criteria.toLocaleLowerCase();
     const res = this.betas.filter(
       (beta: Movie) => beta.title?.toLocaleLowerCase().indexOf(criteria)!= -1
@@ -60,8 +58,7 @@ export class BetaserieComponent {
   poularity(){
     this._betaserieService.getPopularity().subscribe({
       next : (res) => {
-        this.betas = res['movies'];
-        // console.log(this.betas)
+        this.betas = res['movies'];       
       },
     })
   }
@@ -69,8 +66,7 @@ export class BetaserieComponent {
   random(){
     this._betaserieService.getRandomMovie().subscribe({
       next : (res) => {
-        this.beta_rnd = res['movies'];
-        // console.log(res);
+        this.beta_rnd = res['movies'];        
       },
       error : () => {},
       complete : () => {}

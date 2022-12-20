@@ -6,6 +6,7 @@ export class Film {
   Origine: string;
   Synopsis_film: string;
   Img_Url : URL;
+  favori : boolean;
 
   constructor(
     id: number,
@@ -14,7 +15,8 @@ export class Film {
     Duree: string,
     Origine: string,
     Synopsis_film: string,
-    Img_Url : URL
+    Img_Url : URL,
+    favori : boolean
   ) {
     this.id = id;
     this.titre = titre;
@@ -23,5 +25,6 @@ export class Film {
     this.Origine = Origine;
     this.Synopsis_film = Synopsis_film;
     this.Img_Url = Img_Url;
+    this.favori = favori;
   }
 }

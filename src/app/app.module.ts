@@ -10,6 +10,8 @@ import { FilmComponent } from './film/film.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BetaserieComponent } from './betaserie/betaserie.component';
 import { FormsModule } from '@angular/forms';
+import { ReplaceCommaPipe } from './shared/pipe/replace-comma.pipe';
+import { StarRatingComponent } from './shared/components/star-rating/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     FilmComponent,
-    BetaserieComponent
+    BetaserieComponent,
+    ReplaceCommaPipe,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,

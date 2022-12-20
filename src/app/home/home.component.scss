@@ -22,6 +22,19 @@
   box-shadow: 12px 12px 2px 1px rgba(110, 110, 112, 0.2);
 }
 
+#fleche{  
+  display: flex;
+  left: -25px;
+  margin-top: 25px;
+}
+
+#rating{
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
 
 
 

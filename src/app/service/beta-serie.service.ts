@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Data } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Movie } from '../models/betaSerie';
+import { catchError, Observable, throwError, tap } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ import { Movie } from '../models/betaSerie';
 
 export class BetaSerieService {
 
-  private _url_film = "https://api.betaseries.com/movies/";
-  private _order = "list?order=popularity";
-  private _random = "random?";
-  private _getMovieById = "https://api.betaseries.com/movies/movie?id=";
-  private _query = "https://api.betaseries.com/search/movies?text="
-  private _key = "&key=35d66b75531a";
+  private readonly _url_film = "https://api.betaseries.com/movies/"; 
+  private readonly _order = "list?order=popularity";
+  private readonly _random = "random?";
+  private readonly _getMovieById = "https://api.betaseries.com/movies/movie?id=";
+  private readonly _query = "https://api.betaseries.com/search/movies?text="
+  private readonly _key = "&key=35d66b75531a";
 
   //https://api.betaseries.com/shows/display?id=58628&key=35d66b75531a
   //https://api.betaseries.com/movies/movie?id=58628&key=35d66b75531a
@@ -23,20 +24,43 @@ export class BetaSerieService {
 
   constructor(private _httpClient : HttpClient) { }
 
-  getMovieById(id : string) : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._getMovieById}${id}${this._key}`);
+  getMovieById(id : number) : Observable<Data>{
+    return this._httpClient.get<Data>(`${this._getMovieById}${id}${this._key}`).pipe(
+      tap(Data => console.log('Data id: ', Data)), 
+      catchError(this.handleError)
+    );    
   }
 
   getPopularity() : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`);
+    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`).pipe(
+      tap(Data => console.log('Data popularity: ', Data)), 
+      catchError(this.handleError)
+    );
   }
 
   getRandomMovie() : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`);
+    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`).pipe(
+      tap(Data => console.log('Data: ', Data)), 
+      catchError(this.handleError)
+    );
   }
 
   searchMovie(search : string) : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._query}${search}${this._key}`);
+    return this._httpClient.get<Data>(`${this._query}${search}${this._key}`).pipe(
+      tap(Data => console.log('Data: ', Data)), 
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(err : HttpErrorResponse){
+    if(err.error instanceof ErrorEvent){
+      console.error('An error occured.', err.error.message);
+    } else{
+      console.error(
+        'Backend return code $(error.status), body was: ${err.error}'
+      );
+    }
+    return throwError('Something bad happened: please try again later.');
   }
 }
 

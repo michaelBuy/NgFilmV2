@@ -6,7 +6,7 @@
             {{ showBadge ? 'visibility_off' : 'visibility'}}
         </span>       
         <span>
-          {{ showBadge ? 'Cacher' : 'Afficher'}} Nouveau
+          {{ showBadge ? 'Cacher' : 'Afficher'}} Nouveau  
         </span>
       </button>
       <hr>
@@ -14,15 +14,15 @@
         <div class="row">
             <div class="col-md-4">
                 <span class="filter">Filtre actuel : </span>
-                <b>{{ _betaserieFilter }}</b>
+                <b>{{ betaFilter }}</b>
             </div>
             <div class="col-md-8 form-group">
-                <input type="text" class="form-control" [(ngModel)]="_betaserieFilter">
+                <input type="text" class="form-control" [(ngModel)]="betaFilter">
             </div>
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-5">
-          <div class="col mb-4" *ngFor="let film of betas">
+          <div class="col mb-4" *ngFor="let film of filteredBetaserie">
               <div class="card w-30 h-100" >
                   <!-- <h5 class="card-title">{{ film.title }}</h5> -->
                   <img class="card-img-top" [src]="film.poster" [title]="film.title" [alt]="film.title">
