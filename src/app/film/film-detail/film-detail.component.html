@@ -1,0 +1,61 @@
+
+<div class="container">
+
+    <div class="card" *ngIf="film">
+        <div class="card-header">
+            {{ film.title | uppercase}}
+        </div>
+    </div>
+
+    <div id="img_pricipal" class="col-md-4">
+        <img [src]="film.poster" [title]="film.title | uppercase" [alt]="film.title"
+        class="card-image-top">   
+        <span id="favori" class="material-icons" (click)="toggleIsShowStar(film)">
+            <span *ngIf="showStar">{{ 'star' }}</span>
+          <span *ngIf="!showStar" [ngStyle]="{color : 'gold'}">{{ 'star' }}</span>                
+        </span>                  
+    </div>
+
+    <div id ="nom" class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- <div class="col-md-4">Nom : </div> -->
+                    <div class="col-md-8">{{ film.title }}</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="annee" class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- <div class="col-md-4">Année : </div> -->
+                    <div class="col-md-8">{{ film.production_year}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- <div class="col-md-4">synopsis : </div> -->
+                    <div class="col-md-8">{{ film.synopsis}}</div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="img2" class="col-md-4">
+            <img [src]="film.backdrop" [title]="film.title  | uppercase" [alt]="film.title">                     
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-outline-info d-flex" (click)="backToList()">
+                <span class="material-icons">keyboard_arrow_left</span>
+                retour à la liste
+            </button>
+        </div>
+
+    </div>
+
+</div>

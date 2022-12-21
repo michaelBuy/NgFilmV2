@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { Data } from '@angular/router';
 import { catchError, Observable, throwError, tap } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,29 +23,25 @@ export class BetaSerieService {
   constructor(private _httpClient : HttpClient) { }
 
   getMovieById(id : number) : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._getMovieById}${id}${this._key}`).pipe(
-      tap(Data => console.log('Data id: ', Data)), 
+    return this._httpClient.get<Data>(`${this._getMovieById}${id}${this._key}`).pipe(      
       catchError(this.handleError)
     );    
   }
 
   getPopularity() : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`).pipe(
-      tap(Data => console.log('Data popularity: ', Data)), 
+    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`).pipe(      
       catchError(this.handleError)
     );
   }
 
   getRandomMovie() : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`).pipe(
-      tap(Data => console.log('Data: ', Data)), 
+    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`).pipe(     
       catchError(this.handleError)
     );
   }
 
   searchMovie(search : string) : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._query}${search}${this._key}`).pipe(
-      tap(Data => console.log('Data: ', Data)), 
+    return this._httpClient.get<Data>(`${this._query}${search}${this._key}`).pipe(      
       catchError(this.handleError)
     );
   }

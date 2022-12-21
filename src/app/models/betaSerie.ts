@@ -6,6 +6,11 @@
     imdb_id? : string;
     followers? : string;
     production_year? : string;
+    synopsis? : string;
+    notes : number;
+    genres : string;
+    backdrop : string;
+
     // constructor(
     //     id : string,
     //     title : string,

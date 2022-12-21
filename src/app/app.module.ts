@@ -12,6 +12,7 @@ import { BetaserieComponent } from './betaserie/betaserie.component';
 import { FormsModule } from '@angular/forms';
 import { ReplaceCommaPipe } from './shared/pipe/replace-comma.pipe';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating/star-rating.component';
+import { FilmDetailComponent } from './film/film-detail/film-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { StarRatingComponent } from './shared/components/star-rating/star-rating
     FilmComponent,
     BetaserieComponent,
     ReplaceCommaPipe,
-    StarRatingComponent
+    StarRatingComponent,
+    FilmDetailComponent
   ],
   imports: [
     BrowserModule,
