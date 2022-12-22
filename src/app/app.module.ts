@@ -14,6 +14,7 @@ import { ReplaceCommaPipe } from './shared/pipe/replace-comma.pipe';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating/star-rating.component';
 import { FilmDetailComponent } from './film/film-detail/film-detail.component';
 import { FilmAddComponent } from './film/film-add/film-add.component';
+import { FilmUpdateComponent } from './film/film-update/film-update.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FilmAddComponent } from './film/film-add/film-add.component';
     ReplaceCommaPipe,
     StarRatingComponent,
     FilmDetailComponent,
-    FilmAddComponent
+    FilmAddComponent,
+    FilmUpdateComponent
   ],
   imports: [
     BrowserModule,

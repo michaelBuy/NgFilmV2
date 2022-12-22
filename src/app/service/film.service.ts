@@ -16,9 +16,20 @@ export class FilmService {
     return this._httpClient.get<Film[]>(`${this._url}Film_`)
   }
 
+  getById(id : Film) : Observable<Film> {
+    console.log(id);
+    
+    return this._httpClient.get<Film>(`${this._url}Film_/${id.id}`)
+  }
+
   addMovie(film : Film) : void{
     this._httpClient.post<Film>(`${this._url}Film_`, film).subscribe({
       next : (res) => {}
     })
+  }
+
+  updateMovie(film : Film, id : Film) : void{
+    
+    this._httpClient.put<Film>(`${this._url}Film_/${id}`, film)
   }
 }

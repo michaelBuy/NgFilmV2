@@ -3,13 +3,16 @@
     <h2 *ngIf="films && films.length > 0">{{ titre }}</h2>
     <div class="row row-cols-1 row-cols-md-3">
         <div class="col mb-4" *ngFor="let film of films">
-            <div class="card">
-                <h5 class="card-title">{{ film.titre }}</h5>
-                <!-- <img class="card-img-top" src=' film.Img_Url ' alt="Card image cap"> -->
-                    <div class="card-body">
-                        <h5 class="card-title">{{ film.dateSortie | date : 'dd/MM/yyyy' }}</h5>
-                        <p class="card-text">{{ film.Duree }}</p>
-                    </div>        
+            <div class="card w-30 h-100">
+                <h4 class="card-title">{{ film.titre }}</h4>
+                <div class="card-body">                            
+                    <p class="card-text">{{ film.duree}}</p>
+                    <p class="card-text">{{ film.dateSortie | date : 'dd/MM/yyyy' }}</p>
+                    <p class="card-text">{{ film.origine}}</p>
+                    <p class="card-text">{{ film.synopsis_Film}}</p>
+                    <button routerLink="/update_movie" type="button" class="btn btn-primary col-sm-3 btn-sm float-right">Modifier</button>
+                    <button type="button" class="btn btn-danger col-sm-3 btn-sm">Supprimer</button> 
+                </div>        
             </div>
         </div>  
     </div>   

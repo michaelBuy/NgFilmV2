@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Film } from 'src/app/models/films-models';
 import { FilmService } from 'src/app/service/film.service';
 
@@ -9,12 +10,14 @@ import { FilmService } from 'src/app/service/film.service';
   templateUrl: './film-add.component.html',
   styleUrls: ['./film-add.component.scss']
 })
+
 export class FilmAddComponent implements OnInit {
 
   registerMovie : FormGroup;
 
   constructor(private _fb : FormBuilder,
-              private _filmService : FilmService){
+              private _filmService : FilmService,
+              private _router : Router){
 
     this.registerMovie = _fb.group({
       titre : [null, [Validators.required]],
