@@ -7,7 +7,8 @@ import { FilmRoutingModule } from './film-routing.module';
   ],
   imports: [
     CommonModule,
-    FilmRoutingModule
+    FilmRoutingModule,
+    
   ]
 })
 export class FilmModule { }

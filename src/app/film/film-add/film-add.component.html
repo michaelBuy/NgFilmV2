@@ -1,0 +1,39 @@
+
+<div class="container">
+    <h2>Ajouter un film</h2>
+    <form [formGroup]="registerMovie" (ngSubmit)="addMovie()">
+
+        <div class="form-group">
+            <label>Nom du film</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="entrer le nom " formControlName="titre">
+        </div>
+
+        <div class="form-group">
+            <label>Date de sortie</label>
+            <input type="date" class="form-control" placeholder="Entrer le date" formControlName="dateSortie">
+        </div>
+        
+        <div class="form-group">
+            <label>Durée du film</label>
+            <input type="text"  class="form-control" placeholder="Entrer la durée du film" formControlName="Duree">            
+        </div>
+
+        <div class="form-group">
+            <label>Origine</label>
+            <input type="text" class="form-control" placeholder="Origine" formControlName="Origine">            
+        </div>
+
+        <div class="form-group">
+            <label>Synopsis</label>            
+            <input type="text" class="form-control" placeholder="Synopsis" formControlName="Synopsis_film">
+        </div>
+
+        <!-- <div class="form-group">
+            <label>Url</label>
+            <input type="text" class="form-control" placeholder="url" formControlName="Img_Url">
+        </div> -->
+
+        <input type="submit" class="form-control" value="Ajouter le film" class="btn btn-primary">
+
+    </form>
+</div>

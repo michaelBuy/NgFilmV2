@@ -9,10 +9,11 @@ import { RegisterComponent } from './register/register.component';
 import { FilmComponent } from './film/film.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BetaserieComponent } from './betaserie/betaserie.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReplaceCommaPipe } from './shared/pipe/replace-comma.pipe';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating/star-rating.component';
 import { FilmDetailComponent } from './film/film-detail/film-detail.component';
+import { FilmAddComponent } from './film/film-add/film-add.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,15 @@ import { FilmDetailComponent } from './film/film-detail/film-detail.component';
     BetaserieComponent,
     ReplaceCommaPipe,
     StarRatingComponent,
-    FilmDetailComponent
+    FilmDetailComponent,
+    FilmAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

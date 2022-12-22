@@ -25,7 +25,4 @@ export class FilmComponent implements OnInit{
       complete : () => {}
     })
   }
-
- 
-
 }

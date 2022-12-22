@@ -8,12 +8,12 @@
     </div>
 
     <div id="img_pricipal" class="col-md-4">
-        <img [src]="film.poster" [title]="film.title | uppercase" [alt]="film.title"
-        class="card-image-top">   
-        <span id="favori" class="material-icons" (click)="toggleIsShowStar(film)">
+        <span id="favori" class="material-icons" (click)="toggleIsShowStar()">
             <span *ngIf="showStar">{{ 'star' }}</span>
           <span *ngIf="!showStar" [ngStyle]="{color : 'gold'}">{{ 'star' }}</span>                
         </span>                  
+        <img [src]="film.poster" [title]="film.title | uppercase" [alt]="film.title"
+        class="card-image-top">   
     </div>
 
     <div id ="nom" class="card-body">

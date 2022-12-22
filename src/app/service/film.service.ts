@@ -15,4 +15,10 @@ export class FilmService {
   getAll() : Observable<Film[]>{
     return this._httpClient.get<Film[]>(`${this._url}Film_`)
   }
+
+  addMovie(film : Film) : void{
+    this._httpClient.post<Film>(`${this._url}Film_`, film).subscribe({
+      next : (res) => {}
+    })
+  }
 }

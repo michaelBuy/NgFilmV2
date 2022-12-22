@@ -5,7 +5,7 @@
         <div class="col mb-4" *ngFor="let film of films">
             <div class="card">
                 <h5 class="card-title">{{ film.titre }}</h5>
-                <img class="card-img-top" src=' film.Img_Url ' alt="Card image cap">
+                <!-- <img class="card-img-top" src=' film.Img_Url ' alt="Card image cap"> -->
                     <div class="card-body">
                         <h5 class="card-title">{{ film.dateSortie | date : 'dd/MM/yyyy' }}</h5>
                         <p class="card-text">{{ film.Duree }}</p>

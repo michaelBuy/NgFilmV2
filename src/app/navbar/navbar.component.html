@@ -2,9 +2,16 @@
     <ul>
         <div class="menu">
             <li><a routerLink="/">Accueil</a></li>
-            <li><a routerLink="/film">Afficher les films</a></li>
-            <li><a routerLink="/betaserie">betaserie</a></li>
+            <div class="dropdown">
+                <li><a routerLink="/film">film</a></li>
+                <div class="dropdown-content">
+                    <a routerLink="/film">liste</a><br>
+                    <a routerLink="/film_add">ajouter</a><br>
+                    <a routerLink="/betaserie">betaserie</a>
+                </div>
+            </div>
         </div>
+
         <div class="buttons">
             <button><a routerLink="/login">Se connecter</a></button>
             <button><a routerLink="/">Se déconnecter</a></button>
