@@ -10,8 +10,8 @@
                     <p class="card-text">{{ film.dateSortie | date : 'dd/MM/yyyy' }}</p>
                     <p class="card-text">{{ film.origine}}</p>
                     <p class="card-text">{{ film.synopsis_Film}}</p>
-                    <button routerLink="/update_movie" type="button" class="btn btn-primary col-sm-3 btn-sm float-right">Modifier</button>
-                    <button type="button" class="btn btn-danger col-sm-3 btn-sm">Supprimer</button> 
+                    <button routerLink="/update_movie/{{ film.id }}" type="button" class="btn btn-primary col-sm-3 btn-sm float-right">Modifier</button>
+                    <button type="button" (click)="delete(film.id)" class="btn btn-danger col-sm-3 btn-sm">Supprimer</button> 
                 </div>        
             </div>
         </div>  

@@ -25,4 +25,15 @@ export class FilmComponent implements OnInit{
       complete : () => {}
     })
   }
+  delete(id : number){
+    this._filmService.deleteMovie(id).subscribe({
+      next : () => {
+        this._filmService.getAll().subscribe({
+          next : (res) => {
+            this.films = res
+          }
+        })
+      }
+    })
+  }
 }

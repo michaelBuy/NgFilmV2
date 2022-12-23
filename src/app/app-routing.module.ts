@@ -16,7 +16,7 @@ const routes: Routes = [
   { path : "register", component : RegisterComponent },
   { path : "film", component : FilmComponent},
   { path : "film_add", component : FilmAddComponent},
-  { path : "update_movie", component : FilmUpdateComponent},
+  { path : "update_movie/:id", component : FilmUpdateComponent},
   { path : "betaserie", component : BetaserieComponent},
   { path : "film/:id", component : FilmDetailComponent},
   { path : "**", component : HomeComponent },

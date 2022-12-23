@@ -22,28 +22,26 @@ export class FilmAddComponent implements OnInit {
     this.registerMovie = _fb.group({
       titre : [null, [Validators.required]],
       dateSortie : [null, ],
-      Duree : [null, ],
-      Origine : [null, [Validators.required]],
-      Synopsis_film : [null,]          
+      duree : [null, ],
+      origine : [null, [Validators.required]],
+      synopsis_film : [null,]          
     })
   }
 
   ngOnInit(){
   }
 
-  addMovie() : void {
-    console.log("fonctionne");
-    
-    if(this.registerMovie.valid){
-      console.log(this.registerMovie.valid);
+  addMovie() : void {     
+    console.log(this.registerMovie.value);
+       
+    if(this.registerMovie.valid){    
+        
       let registerMovie : Film = this.registerMovie.value;
-      this._filmService.addMovie(registerMovie);
-      console.log("valid");
-      
+      console.log(registerMovie.titre);
+      this._filmService.addMovie(registerMovie);           
     }
     else {
-      this.registerMovie.markAllAsTouched();
-      console.log(" non valid");
+      this.registerMovie.markAllAsTouched();      
     }
   }
 }
