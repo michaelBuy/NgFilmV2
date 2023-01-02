@@ -15,22 +15,25 @@ export class FilmDetailComponent implements OnInit{
   public film : Movie = <Movie>{};
   public showStar : boolean = true;
   public idMovie? : number;
-  public movieById : Movie[] = [];
+  public movieById : Movie[] = [];  
+  public filmRenvoiListe : Film;  
+  public filmTransit : Film;
 
   constructor(
     private route : ActivatedRoute,
     private _filmDetailService : BetaSerieService,
     private _router : Router,
     private _betaservice : BetaSerieService,
-    private _filmService : FilmService    
-  ){ }
+    private _filmService : FilmService,
+      
+  ){}
 
   ngOnInit(): void {
     const id: number = +this.route.snapshot.paramMap.get('id')!;  
     this._filmDetailService.getMovieById(id).subscribe({
       next : (res) => {
         this.film = res['movie']    
-        console.log(this.film);                   
+        // console.log(this.film);                   
       }
     })      
   }
@@ -42,8 +45,7 @@ export class FilmDetailComponent implements OnInit{
       } else {
         this.film.favori = false;
       }
-  }    
- 
+  } 
   
   // récupere par id
   getMovieById(id : number){
@@ -55,7 +57,26 @@ export class FilmDetailComponent implements OnInit{
   }
 
   backToList(){
-    this._router.navigate(['/home']);
-    // this._navigation.goBack();
+    this._router.navigate(['/home']);   
+  }  
+
+  addFavori( entity : any){
+    if(entity != undefined){
+              
+    
+      let x : Film = <Film>{};
+      x = new Film(
+        this.filmRenvoiListe.id = entity.id,
+        this.filmRenvoiListe.titre = entity.title,
+        this.filmRenvoiListe.dateSortie = entity.release_date,
+        this.filmRenvoiListe.duree = "aucune information",
+        this.filmRenvoiListe.origine = entity.language,
+        this.filmRenvoiListe.synopsis_Film = entity.synopsis
+      )
+    }
+           
+    
+      
+    // this._filmService.addMovie(x);       
   }
 }

@@ -1,5 +1,5 @@
   export interface Movie{
-    id? : number;
+    id : number;
     title? : string;
     poster? : string;
     tmdb_id? : string;
@@ -11,4 +11,6 @@
     genres : string;
     backdrop : string;
     favori : boolean;
+    release_date : Date;
+    language : string;
 }

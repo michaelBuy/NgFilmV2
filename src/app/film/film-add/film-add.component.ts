@@ -31,13 +31,9 @@ export class FilmAddComponent implements OnInit {
   ngOnInit(){
   }
 
-  addMovie() : void {     
-    console.log(this.registerMovie.value);
-       
-    if(this.registerMovie.valid){    
-        
-      let registerMovie : Film = this.registerMovie.value;
-      console.log(registerMovie.titre);
+  addMovie() : void {            
+    if(this.registerMovie.valid){           
+      let registerMovie : Film = this.registerMovie.value;      
       this._filmService.addMovie(registerMovie);           
     }
     else {

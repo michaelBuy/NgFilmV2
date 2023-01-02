@@ -29,7 +29,7 @@ export class FilmUpdateComponent implements OnInit{
       dateSortie : [null],
       duree : [null],
       origine : [null],
-      synopsis_film : [null]  
+      synopsis_Film : [null]  
   })   
 }
   ngOnInit(): void {      
@@ -41,16 +41,17 @@ export class FilmUpdateComponent implements OnInit{
       
     this._filmService.getById(this.filmId).subscribe({ 
       next : (res) => {
-        console.log("Oninit",res);        
+        console.log("Oninit",res.dateSortie);        
         this.film = res;
         this.updateMovieForm.patchValue({
           id : this.film.id,
           titre : this.film.titre,
-          dateSortie : this._datePipe.transform(this.updateMovieForm.get('dateSortie')?.value, 'dd/mm/yyyy'),
+          dateSortie : this._datePipe.transform(this.updateMovieForm.get('dateSortie')?.value, 'dd/MM/yyyy'),
           duree : this.film.duree,
           origine : this.film.origine,
-          synopsis_Film : this.film.synopsis_Film
+          synopsis_Film : this.film.synopsis_Film          
         })
+        console.log("Oninit",res.dateSortie);   
       }
     })
   }
