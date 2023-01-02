@@ -5,6 +5,7 @@ import { FilmAddComponent } from './film/film-add/film-add.component';
 import { FilmDetailComponent } from './film/film-detail/film-detail.component';
 import { FilmUpdateComponent } from './film/film-update/film-update.component';
 import { FilmComponent } from './film/film.component';
+import { GetByIdComponent } from './film/get-by-id/get-by-id.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path : "update_movie/:id", component : FilmUpdateComponent},
   { path : "betaserie", component : BetaserieComponent},
   { path : "film/:id", component : FilmDetailComponent},
-  { path : "**", component : HomeComponent },
+  { path : "favorite/:id", component : GetByIdComponent},
+  { path : "**", component : HomeComponent }
 ];
 
 @NgModule({

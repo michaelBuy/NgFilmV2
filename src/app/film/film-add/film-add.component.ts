@@ -24,20 +24,21 @@ export class FilmAddComponent implements OnInit {
       dateSortie : [null, ],
       duree : [null, ],
       origine : [null, [Validators.required]],
-      synopsis_film : [null,]          
+      synopsis_Film : [null,]
     })
   }
 
   ngOnInit(){
   }
 
-  addMovie() : void {            
-    if(this.registerMovie.valid){           
-      let registerMovie : Film = this.registerMovie.value;      
-      this._filmService.addMovie(registerMovie);           
+  addMovie() : void {
+    if(this.registerMovie.valid){
+      let registerMovie : Film = this.registerMovie.value;
+      this._filmService.addMovie(registerMovie).subscribe();
+      this._router.navigateByUrl('film');
     }
     else {
-      this.registerMovie.markAllAsTouched();      
+      this.registerMovie.markAllAsTouched();
     }
   }
 }

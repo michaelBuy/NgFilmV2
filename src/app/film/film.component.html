@@ -5,23 +5,24 @@
         <div class="col mb-4" *ngFor="let film of films">
             <div class="card w-30 h-100">
                 <h4 class="card-title">{{ film.titre }}</h4>
-                <div class="card-body">                            
+                <div class="card-body">
                     <p class="card-text">{{ film.duree}}</p>
                     <p class="card-text">{{ film.dateSortie | date : 'dd/MM/yyyy' }}</p>
                     <p class="card-text">{{ film.origine}}</p>
                     <p class="card-text">{{ film.synopsis_Film}}</p>
                     <button routerLink="/update_movie/{{ film.id }}" type="button" class="btn btn-primary col-sm-3 btn-sm float-right">Modifier</button>
-                    <button type="button" (click)="delete(film.id)" class="btn btn-danger col-sm-3 btn-sm">Supprimer</button> 
-                </div>        
+                    <button type="button" (click)="delete(film.id)" class="btn btn-danger col-sm-3 btn-sm">Supprimer</button>
+                    <button routerLink="/favorite/{{ film.id }}" type="button" class="btn btn-success col-sm-3 btn-sm">Détail</button>
+                </div>
             </div>
-        </div>  
-    </div>   
+        </div>
+    </div>
 </div>
 
 
 
 
 
-    
+
 
 

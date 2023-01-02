@@ -15,6 +15,7 @@ import { StarRatingComponent } from './shared/components/star-rating/star-rating
 import { FilmDetailComponent } from './film/film-detail/film-detail.component';
 import { FilmAddComponent } from './film/film-add/film-add.component';
 import { FilmUpdateComponent } from './film/film-update/film-update.component';
+import { GetByIdComponent } from './film/get-by-id/get-by-id.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,14 @@ import { FilmUpdateComponent } from './film/film-update/film-update.component';
     StarRatingComponent,
     FilmDetailComponent,
     FilmAddComponent,
-    FilmUpdateComponent
+    FilmUpdateComponent,
+    GetByIdComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],

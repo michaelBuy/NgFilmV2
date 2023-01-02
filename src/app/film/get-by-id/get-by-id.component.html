@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="card" *ngIf="film">
+
+    <div class="card-header">
+      {{ film.titre | uppercase }}
+    </div>
+
+    <div id="img_pricipal" class="col-md-4">
+      <img src="{{showImage(film.id)}}" [title]="film.titre | uppercase" [alt]="film.titre" class="card-image-top">
+    </div>
+
+    <div id="img_pricipal" class="col-md-4">
+      <img src={{movieSearch.poster}} [title]="film.titre | uppercase" [alt]="film.titre" class="card-image-top">
+    </div>
+
+      <span id="favori" class="material-icons" (click)="RemoveFavori(film.id)">
+        <span *ngIf="showStar">{{ 'star' }}</span>
+        <span *ngIf="!showStar" [ngStyle]="{color : 'gold'}">{{ 'star' }}</span>
+      </span>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">{{ film.dateSortie | date: 'dd/MM/yyyy' }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">{{ film.origine }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">{{ film.duree }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-8">{{ film.synopsis_Film }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn btn-info d-flex" (click)="backToList()">
+          <span class="material-icons">keyboard_arrow_left</span>
+          retour à la liste
+      </button>
+  </div>
+
+  </div>
+</div>

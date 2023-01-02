@@ -17,7 +17,7 @@ export class FilmUpdateComponent implements OnInit{
   public film? : Film;
   public filmId: any;
 
-  constructor(private _activeroute : ActivatedRoute, 
+  constructor(private _activeroute : ActivatedRoute,
               private _filmService : FilmService,
               private _fb : FormBuilder,
               private _router : Router,
@@ -29,19 +29,18 @@ export class FilmUpdateComponent implements OnInit{
       dateSortie : [null],
       duree : [null],
       origine : [null],
-      synopsis_Film : [null]  
-  })   
+      synopsis_Film : [null]
+  })
 }
-  ngOnInit(): void {      
+  ngOnInit(): void {
 
     this.filmId = +this._activeroute.snapshot.params['id'];
     if(this.filmId == undefined){
       return
     }
-      
-    this._filmService.getById(this.filmId).subscribe({ 
+
+    this._filmService.getById(this.filmId).subscribe({
       next : (res) => {
-        console.log("Oninit",res.dateSortie);        
         this.film = res;
         this.updateMovieForm.patchValue({
           id : this.film.id,
@@ -49,24 +48,22 @@ export class FilmUpdateComponent implements OnInit{
           dateSortie : this._datePipe.transform(this.updateMovieForm.get('dateSortie')?.value, 'dd/MM/yyyy'),
           duree : this.film.duree,
           origine : this.film.origine,
-          synopsis_Film : this.film.synopsis_Film          
+          synopsis_Film : this.film.synopsis_Film
         })
-        console.log("Oninit",res.dateSortie);   
       }
     })
   }
 
-  updateFilm(){    
-    console.log("update :", this.updateMovieForm.value);    
+  updateFilm(){
     if(this.updateMovieForm.valid){
       let updateFilm : Film = this.updateMovieForm.value;
       this._filmService.updateMovie(updateFilm).subscribe({
         next : (res)=> {
-          this._router.navigateByUrl('/');
+          this._router.navigateByUrl('film');
         }
-      })             
+      })
     }else{
-      this.updateMovieForm.markAllAsTouched();      
+      this.updateMovieForm.markAllAsTouched();
     }
   }
 }

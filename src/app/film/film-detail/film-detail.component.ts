@@ -11,12 +11,12 @@ import { Film } from 'src/app/models/films-models';
   styleUrls: ['./film-detail.component.scss']
 })
 export class FilmDetailComponent implements OnInit{
-  
+
   public film : Movie = <Movie>{};
   public showStar : boolean = true;
   public idMovie? : number;
-  public movieById : Movie[] = [];  
-  public filmRenvoiListe : Film;  
+  public movieById : Movie[] = [];
+  public filmRenvoiListe : Film;
   public filmTransit : Film;
 
   constructor(
@@ -25,58 +25,50 @@ export class FilmDetailComponent implements OnInit{
     private _router : Router,
     private _betaservice : BetaSerieService,
     private _filmService : FilmService,
-      
   ){}
 
   ngOnInit(): void {
-    const id: number = +this.route.snapshot.paramMap.get('id')!;  
+    const id: number = +this.route.snapshot.paramMap.get('id')!;
     this._filmDetailService.getMovieById(id).subscribe({
       next : (res) => {
-        this.film = res['movie']    
-        // console.log(this.film);                   
+        this.film = res['movie']
       }
-    })      
+    })
   }
 
-  toggleIsShowStar(){      
-      this.showStar = !this.showStar;  
+  toggleIsShowStar(){
+      this.showStar = !this.showStar;
       if(this.showStar){
         this.film.favori = true;
       } else {
         this.film.favori = false;
       }
-  } 
-  
+  }
+
   // récupere par id
   getMovieById(id : number){
     this._betaservice.getMovieById(id).subscribe({
       next : (res) => {
-        this.movieById = res['movie'];                                                  
+        this.movieById = res['movie'];
       }
     })
   }
 
-  backToList(){
-    this._router.navigate(['/home']);   
-  }  
 
-  addFavori( entity : any){
-    if(entity != undefined){
-              
-    
-      let x : Film = <Film>{};
-      x = new Film(
-        this.filmRenvoiListe.id = entity.id,
-        this.filmRenvoiListe.titre = entity.title,
-        this.filmRenvoiListe.dateSortie = entity.release_date,
-        this.filmRenvoiListe.duree = "aucune information",
-        this.filmRenvoiListe.origine = entity.language,
-        this.filmRenvoiListe.synopsis_Film = entity.synopsis
-      )
+  backToList(){
+    this._router.navigate(['/home']);
+  }
+
+  addFavori(entity : Movie){
+    if(entity != null){
+      this.filmRenvoiListe = new Film(entity.id,
+                                      entity.title!,
+                                      entity.release_date,
+                                      "aucune info",
+                                      entity.language,
+                                      entity.synopsis!)
+      this._filmService.addMovie(this.filmRenvoiListe).subscribe();
+      this.toggleIsShowStar();
     }
-           
-    
-      
-    // this._filmService.addMovie(x);       
   }
 }

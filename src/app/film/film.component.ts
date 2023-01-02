@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Film } from '../models/films-models';
 import { FilmService } from '../service/film.service';
 
+
 @Component({
   selector: 'app-film',
   templateUrl: './film.component.html',
@@ -17,14 +18,14 @@ export class FilmComponent implements OnInit{
 
   ngOnInit(): void{
     this._filmService.getAll().subscribe({
-      next : (res) => {   
-        console.log(res);             
+      next : (res) => {
         this.films = res
       },
       error : () => {},
       complete : () => {}
     })
   }
+
   delete(id : number){
     this._filmService.deleteMovie(id).subscribe({
       next : () => {
@@ -36,4 +37,5 @@ export class FilmComponent implements OnInit{
       }
     })
   }
+
 }

@@ -9,11 +9,11 @@
 
     <div id="img_pricipal" class="col-md-4">
         <span id="favori" class="material-icons" (click)="addFavori(film)">
-            <span *ngIf="showStar">{{ 'star' }}</span>
-          <span *ngIf="!showStar" [ngStyle]="{color : 'gold'}">{{ 'star' }}</span>                
-        </span>                  
+          <span *ngIf="showStar">{{ 'star' }}</span>
+          <span *ngIf="!showStar" [ngStyle]="{color : 'gold'}">{{ 'star' }}</span>
+        </span>
         <img [src]="film.poster" [title]="film.title | uppercase" [alt]="film.title"
-        class="card-image-top">   
+        class="card-image-top">
     </div>
 
     <div id ="nom" class="card-body">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="annee" class="row">
             <div class="col-md-8">
                 <div class="row">
@@ -43,9 +43,9 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="img2" class="col-md-4">
-            <img [src]="film.backdrop" [title]="film.title  | uppercase" [alt]="film.title">                     
+            <img [src]="film.backdrop" [title]="film.title  | uppercase" [alt]="film.title">
         </div>
 
         <div class="card-footer">
