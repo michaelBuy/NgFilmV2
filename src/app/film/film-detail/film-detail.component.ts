@@ -4,6 +4,8 @@ import { BetaSerieService } from 'src/app/service/beta-serie.service';
 import { Movie } from 'src/app/models/betaSerie';
 import { FilmService } from 'src/app/service/film.service';
 import { Film } from 'src/app/models/films-models';
+import { ImgApiService } from 'src/app/service/img-api.service';
+import { ImgApi } from 'src/app/models/imgApi';
 
 @Component({
   selector: 'app-film-detail',
@@ -20,6 +22,7 @@ export class FilmDetailComponent implements OnInit{
   public filmTransit : Film;
 
   constructor(
+    private _imgApi : ImgApiService,
     private route : ActivatedRoute,
     private _filmDetailService : BetaSerieService,
     private _router : Router,
@@ -29,8 +32,6 @@ export class FilmDetailComponent implements OnInit{
 
   ngOnInit(): void {
     const id: number = +this.route.snapshot.paramMap.get('id')!;
-    console.log(id);
-    
     this._filmDetailService.getMovieById(id).subscribe({
       next : (res) => {
         this.film = res['movie']
@@ -56,14 +57,12 @@ export class FilmDetailComponent implements OnInit{
     })
   }
 
-
   backToList(){
     this._router.navigate(['/home']);
   }
 
   addFavori(entity : Movie){
     if(entity != null){
-      console.log(entity.id)
       this.filmRenvoiListe = new Film(entity.id,
                                       entity.title!,
                                       entity.release_date,
