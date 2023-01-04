@@ -13,19 +13,26 @@ import { FilmService } from 'src/app/service/film.service';
 export class GetByIdComponent implements OnInit{
 
   public film : Film;
+
   public showStar : boolean;
+
   public img : string;
+
   public imgBeta : string;
+
   public movieSearch : Movie;
 
   constructor(
+
     private _route : ActivatedRoute,
     private _filmService : FilmService,
     private _router : Router,
     private _beta : BetaSerieService
+
   ){}
 
   ngOnInit(): void {
+
     const id: number = +this._route.snapshot.paramMap.get('id')!;
     this._beta.getMovieById(id).subscribe({
       next : (res) => {
@@ -39,11 +46,12 @@ export class GetByIdComponent implements OnInit{
         this.film = res;
       }
     })
+
   }
 
   showImage(id : number) : string{
     if(id>= 1 || id<5){
-      return this.img = `../assets/img/${id}.jpg`
+      return this.img = `assets/img/${id}.jpg`
     }else{
       return this.movieSearch.poster!
     }

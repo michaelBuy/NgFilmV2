@@ -47,6 +47,8 @@ export class HomeComponent implements OnInit{
     this._betaservice.searchMovie(search).subscribe({
       next : (res) => {
         this.movieSearch = res['movies'];
+        // console.log( this.movieSearch);
+        
       },
       error : (err) => { this.errMsg = err},
       complete : () => {}

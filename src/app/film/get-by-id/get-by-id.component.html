@@ -9,9 +9,9 @@
       <img src="{{showImage(film.id)}}" [title]="film.titre | uppercase" [alt]="film.titre" class="card-image-top">
     </div>
 
-    <div id="img_pricipal" class="col-md-4">
+    <!-- <div id="img_pricipal" class="col-md-4">
       <img src={{movieSearch.poster}} [title]="film.titre | uppercase" [alt]="film.titre" class="card-image-top">
-    </div>
+    </div> -->
 
       <span id="favori" class="material-icons" (click)="RemoveFavori(film.id)">
         <span *ngIf="showStar">{{ 'star' }}</span>

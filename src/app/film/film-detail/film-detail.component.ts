@@ -29,6 +29,8 @@ export class FilmDetailComponent implements OnInit{
 
   ngOnInit(): void {
     const id: number = +this.route.snapshot.paramMap.get('id')!;
+    console.log(id);
+    
     this._filmDetailService.getMovieById(id).subscribe({
       next : (res) => {
         this.film = res['movie']
@@ -61,6 +63,7 @@ export class FilmDetailComponent implements OnInit{
 
   addFavori(entity : Movie){
     if(entity != null){
+      console.log(entity.id)
       this.filmRenvoiListe = new Film(entity.id,
                                       entity.title!,
                                       entity.release_date,
