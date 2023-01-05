@@ -18,13 +18,21 @@ export class GetByIdComponent implements OnInit{
 
   public showStar : boolean;
 
-  public img : string;
+  public imgBeta : ImgApi;
 
-  public imgBeta : string;
+  public filmAfficher : Movie = <Movie>{};
+
+  public img : string;
 
   public movie : Movie;
 
+  public idBeta : number
+
+  public movieById : Movie[] = [];
+
   public imgApi : ImgApi[] = [];
+
+  public idTemp = new ImgApi(0, 0, 0);
 
   constructor(
 
@@ -39,31 +47,39 @@ export class GetByIdComponent implements OnInit{
 
     const id: number = +this._route.snapshot.paramMap.get('id')!;
 
+      this._filmService.getById(id).subscribe({
+        next : (res) => {
+          this.film = res;
+        }
+      })
 
-    this._imgApi.getAll().subscribe({
+     // Récupération de l'id venant des favoris
+     //******************************************** */
+      this.idTemp.Id_Film = id;
+      console.log(this.idTemp.Id_Film);
+      this._imgApi.getById(this.idTemp.Id_Film).subscribe({
+        next : (res) => {
+          this.imgBeta = res;
+          this.idBeta = +this.imgBeta;
+       }
+      })
+
+      //Récupération de l'image venant de BetaSerie
+      //******************************************** */
+
+      console.log(this.idBeta);
+      this._betaService.getMovieById(this.idBeta).subscribe({
+        next : (res) => {
+          // this.filmAfficher = res['movie']
+          // console.log(this.filmAfficher);
+        }
+      })
+  }
+
+  getMovieById(id : number){
+    this._betaService.getMovieById(id).subscribe({
       next : (res) => {
-
-        this.imgApi = res;
-        let idImage =  this.imgApi.find(i => i.Id_Film == id)
-        //console.log(idImage);
-
-        // this._imgApi.getById(id).subscribe({
-        //   next : (res) => {
-        //     console.log(res);
-        //   }
-        // })
-        // for(let index of this.imgApi){
-        //   console.log(index.Id_Film);
-        //   if(index.Id_Film== id){
-        //     console.log();
-        //   }
-        // }
-      }
-    })
-
-    this._filmService.getById(id).subscribe({
-      next : (res) => {
-        this.film = res;
+        this.movieById = res['movie'];
       }
     })
   }
@@ -71,8 +87,9 @@ export class GetByIdComponent implements OnInit{
   showImage(id : number): string{
     if(id >=0 && id < 5){
       return this.img = `assets/img/${id}.jpg`
+    } else{
+      return ""
     }
-    return ""
   }
 
   RemoveFavori(id : number){

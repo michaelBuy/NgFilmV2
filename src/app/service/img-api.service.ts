@@ -17,7 +17,7 @@ export class ImgApiService {
   }
 
   getById(id: number) : Observable<ImgApi>{
-    return this._httpClient.get<ImgApi>(`${this._url}imgApi_${id}`)
+    return this._httpClient.get<ImgApi>(`${this._url}imgApi_/${id}`)
   }
 
   add(img : ImgApi) : Observable<ImgApi>{

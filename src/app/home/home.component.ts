@@ -23,32 +23,11 @@ export class HomeComponent implements OnInit{
   ngOnChanges() : void {
   }
 
-  // switch pour cocher l'étoile et l'ajouter au favori
-  // En construction
-  // toggleIsShowStar(entity : Movie){
-  //   if(entity.id != null){
-  //     this.showStar = !this.showStar;
-  //   }
-  //   this.idMovie = entity.id;
-  //   this.getMovieById(this.idMovie!)
-  // };
-
-  // // récupere par id
-  // getMovieById(id : number){
-  //   this._betaservice.getMovieById(id).subscribe({
-  //     next : (res) => {
-  //       this.movieById = res['movie'];
-  //     }
-  //   })
-  // }
-
   // Recherche par nom
   searchMovie(search : string){
     this._betaservice.searchMovie(search).subscribe({
       next : (res) => {
         this.movieSearch = res['movies'];
-        // console.log( this.movieSearch);
-        
       },
       error : (err) => { this.errMsg = err},
       complete : () => {}

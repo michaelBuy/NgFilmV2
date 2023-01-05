@@ -22,7 +22,7 @@ export class FilmDetailComponent implements OnInit{
   public filmTransit : Film;
 
   constructor(
-    private _imgApi : ImgApiService,
+
     private route : ActivatedRoute,
     private _filmDetailService : BetaSerieService,
     private _router : Router,
