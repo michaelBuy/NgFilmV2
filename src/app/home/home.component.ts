@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit{
   movie : string = "";
   public receiveRating? : string;
   public errMsg?: string;
+  public spinner : boolean = false;
 
   constructor(private _betaservice : BetaSerieService){}
 
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit{
 
   // Recherche par nom
   searchMovie(search : string){
+    this.spinner = true;
     this._betaservice.searchMovie(search).subscribe({
       next : (res) => {
         this.movieSearch = res['movies'];

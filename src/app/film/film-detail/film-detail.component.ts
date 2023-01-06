@@ -63,6 +63,8 @@ export class FilmDetailComponent implements OnInit{
 
   addFavori(entity : Movie){
     if(entity != null){
+      console.log(entity);
+
       this.filmRenvoiListe = new Film(entity.id,
                                       entity.title!,
                                       entity.release_date,

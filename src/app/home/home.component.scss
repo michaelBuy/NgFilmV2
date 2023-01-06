@@ -22,7 +22,7 @@
   box-shadow: 12px 12px 2px 1px rgba(110, 110, 112, 0.2);
 }
 
-#fleche{  
+#fleche{
   display: flex;
   margin-right: 25px;
   margin-top: 5px;
@@ -32,4 +32,12 @@
 margin-top: 25px;
 margin-left: 30px;
 }
+
+.spinner-border{
+  animation-duration: 2s;
+  float : right;
+  margin-right: 75%;
+}
+
+
 

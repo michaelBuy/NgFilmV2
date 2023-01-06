@@ -1,11 +1,14 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Movie } from 'src/app/models/betaSerie';
 import { Film } from 'src/app/models/films-models';
 import { ImgApi } from 'src/app/models/imgApi';
 import { BetaSerieService } from 'src/app/service/beta-serie.service';
 import { FilmService } from 'src/app/service/film.service';
 import { ImgApiService } from 'src/app/service/img-api.service';
+
 
 @Component({
   selector: 'app-get-by-id',
@@ -30,10 +33,6 @@ export class GetByIdComponent implements OnInit{
 
   public movieById : Movie[] = [];
 
-  public imgApi : ImgApi[] = [];
-
-  public idTemp = new ImgApi(0, 0, 0);
-
   constructor(
 
     private _route : ActivatedRoute,
@@ -47,33 +46,25 @@ export class GetByIdComponent implements OnInit{
 
     const id: number = +this._route.snapshot.paramMap.get('id')!;
 
+    if(id > 4){
+      forkJoin([
+        this._filmService.getById(id),
+        this._imgApi.getById(id)
+      ]).subscribe(([film, img]) => {
+        console.log(film, img);
+        const idFilm = (img as any).id_Film;
+        this.film = film;
+        this.imgBeta = img;
+        this.idBeta = idFilm;
+        this._betaService.getMovieById(this.idBeta).subscribe(({movie}) => this.filmAfficher = movie);
+      })
+    } else {
       this._filmService.getById(id).subscribe({
         next : (res) => {
-          this.film = res;
+          this.film = res
         }
       })
-
-     // Récupération de l'id venant des favoris
-     //******************************************** */
-      this.idTemp.Id_Film = id;
-      console.log(this.idTemp.Id_Film);
-      this._imgApi.getById(this.idTemp.Id_Film).subscribe({
-        next : (res) => {
-          this.imgBeta = res;
-          this.idBeta = +this.imgBeta;
-       }
-      })
-
-      //Récupération de l'image venant de BetaSerie
-      //******************************************** */
-
-      console.log(this.idBeta);
-      this._betaService.getMovieById(this.idBeta).subscribe({
-        next : (res) => {
-          // this.filmAfficher = res['movie']
-          // console.log(this.filmAfficher);
-        }
-      })
+    }
   }
 
   getMovieById(id : number){
@@ -87,9 +78,8 @@ export class GetByIdComponent implements OnInit{
   showImage(id : number): string{
     if(id >=0 && id < 5){
       return this.img = `assets/img/${id}.jpg`
-    } else{
-      return ""
     }
+      return ""
   }
 
   RemoveFavori(id : number){
