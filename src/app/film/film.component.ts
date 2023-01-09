@@ -7,6 +7,8 @@ import { forkJoin } from 'rxjs';
 import { ImgApi } from '../models/imgApi';
 import { BetaSerieService } from '../service/beta-serie.service';
 import { Router } from '@angular/router';
+import { Character } from '../models/character';
+import { ThisReceiver } from '@angular/compiler';
 
 type FilmWithPoster = Film & { poster: string }
 @Component({
@@ -19,6 +21,8 @@ export class FilmComponent implements OnInit{
   titre = "Ma sélection :"
 
   films : FilmWithPoster[] = [];
+
+  character : Character[] = [];
 
   filmDb : Film[] = [];
 
@@ -62,6 +66,15 @@ export class FilmComponent implements OnInit{
           this.films?.push(movie)
         })
       })
+    })
+  }
+
+  getCharacter(id : number){
+    this._betaService.getCharactersMovie(id).subscribe({
+      next : (res) => {
+        console.log(res);
+        this.character.find(x => x.actor);
+      }
     })
   }
 

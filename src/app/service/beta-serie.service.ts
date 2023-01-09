@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Data } from '@angular/router';
+import { Character } from '../models/character';
 import { catchError, Observable, throwError, tap } from 'rxjs';
 
 @Injectable({
@@ -9,7 +10,8 @@ import { catchError, Observable, throwError, tap } from 'rxjs';
 
 export class BetaSerieService {
 
-  private readonly _url_film = "https://api.betaseries.com/movies/"; 
+  private readonly _url_film = "https://api.betaseries.com/movies/";
+  private readonly _character = "characters?id=";
   private readonly _order = "list?order=popularity";
   private readonly _random = "random?";
   private readonly _getMovieById = "https://api.betaseries.com/movies/movie?id=";
@@ -18,30 +20,35 @@ export class BetaSerieService {
 
   //https://api.betaseries.com/shows/display?id=58628&key=35d66b75531a
   //https://api.betaseries.com/movies/movie?id=58628&key=35d66b75531a
+  //https://api.betaseries.com/movies/characters?id=2&key=35d66b75531a
 
 
   constructor(private _httpClient : HttpClient) { }
 
+  getCharactersMovie(id : number) : Observable<Character>{
+    return this._httpClient.get<Character>(`${this._url_film}${this._character}${id}${this._key}`)
+  }
+
   getMovieById(id : number) : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._getMovieById}${id}${this._key}`).pipe(      
+    return this._httpClient.get<Data>(`${this._getMovieById}${id}${this._key}`).pipe(
       catchError(this.handleError)
-    );    
+    );
   }
 
   getPopularity() : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`).pipe(      
+    return this._httpClient.get<Data>(`${this._url_film}${this._order}${this._key}`).pipe(
       catchError(this.handleError)
     );
   }
 
   getRandomMovie() : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`).pipe(     
+    return this._httpClient.get<Data>(`${this._url_film}${this._random}${this._key}`).pipe(
       catchError(this.handleError)
     );
   }
 
   searchMovie(search : string) : Observable<Data>{
-    return this._httpClient.get<Data>(`${this._query}${search}${this._key}`).pipe(      
+    return this._httpClient.get<Data>(`${this._query}${search}${this._key}`).pipe(
       catchError(this.handleError)
     );
   }
