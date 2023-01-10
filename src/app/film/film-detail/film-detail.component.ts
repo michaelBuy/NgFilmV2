@@ -4,8 +4,6 @@ import { BetaSerieService } from 'src/app/service/beta-serie.service';
 import { Movie } from 'src/app/models/betaSerie';
 import { FilmService } from 'src/app/service/film.service';
 import { Film } from 'src/app/models/films-models';
-import { ImgApiService } from 'src/app/service/img-api.service';
-import { ImgApi } from 'src/app/models/imgApi';
 
 @Component({
   selector: 'app-film-detail',
@@ -28,6 +26,7 @@ export class FilmDetailComponent implements OnInit{
     private _router : Router,
     private _betaservice : BetaSerieService,
     private _filmService : FilmService,
+
   ){}
 
   ngOnInit(): void {

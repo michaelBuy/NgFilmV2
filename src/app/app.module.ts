@@ -16,6 +16,7 @@ import { FilmDetailComponent } from './film/film-detail/film-detail.component';
 import { FilmAddComponent } from './film/film-add/film-add.component';
 import { FilmUpdateComponent } from './film/film-update/film-update.component';
 import { GetByIdComponent } from './film/get-by-id/get-by-id.component';
+import { ListActeurComponent } from './acteur/list-acteur/list-acteur.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { GetByIdComponent } from './film/get-by-id/get-by-id.component';
     FilmDetailComponent,
     FilmAddComponent,
     FilmUpdateComponent,
-    GetByIdComponent
+    GetByIdComponent,
+    ListActeurComponent
   ],
   imports: [
     BrowserModule,

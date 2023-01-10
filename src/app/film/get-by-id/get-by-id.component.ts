@@ -46,7 +46,6 @@ export class GetByIdComponent implements OnInit{
 
     const id: number = +this._route.snapshot.paramMap.get('id')!;
 
-    if(id > 4){
       forkJoin([
         this._filmService.getById(id),
         this._imgApi.getById(id)
@@ -56,16 +55,18 @@ export class GetByIdComponent implements OnInit{
         this.film = film;
         this.imgBeta = img;
         this.idBeta = idFilm;
+
+
         this._betaService.getMovieById(this.idBeta).subscribe(({movie}) => this.filmAfficher = movie);
       })
-    } else {
+
       this._filmService.getById(id).subscribe({
         next : (res) => {
           this.film = res
         }
       })
     }
-  }
+
 
   getMovieById(id : number){
     this._betaService.getMovieById(id).subscribe({
@@ -75,12 +76,12 @@ export class GetByIdComponent implements OnInit{
     })
   }
 
-  showImage(id : number): string{
-    if(id >=0 && id < 5){
-      return this.img = `assets/img/${id}.jpg`
-    }
-      return ""
-  }
+  // showImage(id : number): string{
+  //   if(id >=0 && id < 5){
+  //     return this.img = `assets/img/${id}.jpg`
+  //   }
+  //     return ""
+  // }
 
   RemoveFavori(id : number){
     this.showStar = !this.showStar;

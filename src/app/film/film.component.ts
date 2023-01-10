@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { Character } from '../models/character';
 import { ThisReceiver } from '@angular/compiler';
 
-type FilmWithPoster = Film & { poster: string }
+type FilmWithPoster = Film & { poster: string, distId: number }
 @Component({
   selector: 'app-film',
   templateUrl: './film.component.html',
@@ -34,6 +34,8 @@ export class FilmComponent implements OnInit{
 
   public movie : Movie;
 
+  public castingApi : number;
+
   public idBeta : number;
 
   constructor(private _filmService : FilmService,
@@ -45,8 +47,6 @@ export class FilmComponent implements OnInit{
     this._filmService.getAll().subscribe({
       next : (res) => {
         this.filmDb = res
-        console.log(res);
-
       },
       error : () => {},
       complete : () => {}
@@ -56,10 +56,10 @@ export class FilmComponent implements OnInit{
       this._filmService.getAll(),
       this._imgApi.getAll()
     ]).subscribe(([films, imgs]) => {
-
       const movies: FilmWithPoster[] = films.map((it: Film) => ({...it, poster: ""} as FilmWithPoster));
       movies.forEach(movie => {
         const imgApi: any = imgs.find((it: any) => it.id_Film == movie.id )
+        movie.distId = imgApi.id_Beta
         if (imgApi.id_Beta == 0) return;
         this._betaService.getMovieById(imgApi.id_Beta).subscribe((data:any) => {
           movie.poster = data.movie.poster;
@@ -70,12 +70,7 @@ export class FilmComponent implements OnInit{
   }
 
   getCharacter(id : number){
-    this._betaService.getCharactersMovie(id).subscribe({
-      next : (res) => {
-        console.log(res);
-        this.character.find(x => x.actor);
-      }
-    })
+        this._router.navigate(['/liste_acteur/', id]);
   }
 
   showImage(id : number): string{
@@ -90,8 +85,6 @@ export class FilmComponent implements OnInit{
       next : () => {
         this._filmService.getAll().subscribe({
           next : (res:any) => {
-            console.log(res);
-
             this.films = [];
             this.films.push(...res);
             this._router.navigate(['/home']);
